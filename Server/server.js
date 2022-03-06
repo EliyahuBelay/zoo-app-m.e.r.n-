@@ -36,7 +36,7 @@ require('./Config/passport')(passport);
 //----------importing the function from passport file and invoce the func-------
 
 
-
+const PORT = process.env.PORT || 9000;
 const app = express();
 
 app.use(express.json());
@@ -46,7 +46,7 @@ app.use(cors());
 
 app.use(passport.initialize());
 
-app.listen(process.env.PORT)
+app.listen(PORT)
 
 app.use('/worker',passport.authenticate('jwt',{session:false}),workerRouter);
 app.use('/animal',passport.authenticate('jwt',{session:false}),animalRouter);
